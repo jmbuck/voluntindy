@@ -1,6 +1,9 @@
 .tabs-content {
     background: rgba(76, 175, 80, 0.0)
 }
-.tabs li{
+span{
+    color: black;
+}
+span.col{
     color: #F34B26 !important;
 }

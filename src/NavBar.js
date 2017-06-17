@@ -58,17 +58,17 @@ class NavBar extends Component{
         return (
             <div className="NavBar">
                 <ul className="tabs" data-tabs id="example-tabs">
-                    <li className={this.state.titleClasses[0]} id={0} onClick={this.select.bind(this)}><a href="#panel1" aria-selected={this.state.titleSelected[0]}>HOME</a>
+                    <li className={this.state.titleClasses[0]} id={0} onClick={this.select.bind(this)}><a href="#panel1" aria-selected={this.state.titleSelected[0]}><span className="col">HOME</span></a>
                     </li>
-                    <li className={this.state.titleClasses[1]} id={1} onClick={this.select.bind(this)}><a href="#panel2" aria-selected={this.state.titleSelected[1]}>Volunteer Opportunities</a>
+                    <li className={this.state.titleClasses[1]} id={1} onClick={this.select.bind(this)}><a href="#panel2" aria-selected={this.state.titleSelected[1]}><span className="col">Volunteer Opportunities</span></a>
                     </li>
-                    <li className={this.state.titleClasses[2]} id={2} onClick={this.select.bind(this)}><a href="#panel2" aria-selected={this.state.titleSelected[2]}>Rewards</a>
+                    <li className={this.state.titleClasses[2]} id={2} onClick={this.select.bind(this)}><a href="#panel2" aria-selected={this.state.titleSelected[2]}><span className="col">Rewards</span></a>
                     </li>
-                    <li className={this.state.titleClasses[3]} id={3} onClick={this.select.bind(this)}><a href="#panel2" aria-selected={this.state.titleSelected[3]}>Donate</a>
+                    <li className={this.state.titleClasses[3]} id={3} onClick={this.select.bind(this)}><a href="#panel2" aria-selected={this.state.titleSelected[3]}><span className="col">Donate</span></a>
                     </li>
-                    <li className={this.state.titleClasses[4]} id={4} onClick={this.select.bind(this)}><a href="#panel2" aria-selected={this.state.titleSelected[4]}>Log In</a>
+                    <li className={this.state.titleClasses[4]} id={4} onClick={this.select.bind(this)}><a href="#panel2" aria-selected={this.state.titleSelected[4]}><span className="col">Log In</span></a>
                     </li>
-                    <li className={this.state.titleClasses[5]} id={5} onClick={this.select.bind(this)}><a href="#panel2" aria-selected={this.state.titleSelected[5]}>Your Account</a>
+                    <li className={this.state.titleClasses[5]} id={5} onClick={this.select.bind(this)}><a href="#panel2" aria-selected={this.state.titleSelected[5]}><span className="col">Your Account</span></a>
                     </li>
                 </ul>
 
