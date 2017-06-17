@@ -20,7 +20,6 @@ class Opportunities extends Component {
 
     add(ev){
         ev.preventDefault()
-        debugger;
         const form = ev.currentTarget
         const title = form.title.value
         const desc = form.desc.value
