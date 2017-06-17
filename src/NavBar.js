@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import SignIn from './SignIn'
 import SignUp from './SignUp'
+import UserSiteInfo from './UserSiteInfo'
+import './NavBar.css'
 
 class NavBar extends Component{
     constructor(){
@@ -51,7 +53,7 @@ class NavBar extends Component{
 
                 <div className="tabs-content" data-tabs-content="example-tabs">
                     <div className={this.state.panelClasses[0]} id="panel1">
-                        <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+                        <UserSiteInfo />
                     </div>
                     <div className={this.state.panelClasses[1]} id="panel2">
                         <p>Suspendisse dictum feugiat nisl ut dapibus. Vivamus hendrerit arcu sed erat molestie vehicula. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
