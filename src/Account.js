@@ -4,10 +4,10 @@ class Account extends Component {
     render() {
         return(
             <div className="Account">
-                <ul>
+                <ul style={{"backgroundColor": "white", "listStyle":"none", "padding":"5px" }}>
                     <li>Name: {`${this.props.firstName} ${this.props.lastName}`}</li>
                     <li>Email: {this.props.email}</li>
-                    <li>Your Credits: {this.props.credits}</li>
+                    <li>Your Credits: <span className="material-icons" style={{"fontSize":"14px"}}>account_circle</span> {this.props.credits}</li>
                 </ul>
             </div>
         )

@@ -2,6 +2,8 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    background-color: white;
+    height: 73px;
 }
 img{
     margin-top: -5px;
@@ -13,4 +15,8 @@ h1{
 }
 h1 span {
     color:#F34B26;
+}
+
+.accountInfo {
+    justify-content: flex-end;
 }

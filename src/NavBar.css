@@ -6,4 +6,27 @@ span{
 }
 span.col{
     color: #F34B26 !important;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2em;
+}
+
+a[aria-selected = "true"]{
+    background: #FFDDB8 !important;
+}
+
+button {
+    background-color: #f34b26;
+    margin: 0;
+    line-height: 100%;
+}
+
+button:hover {
+    background-color: 
+#d42c07;
+}
+
+.b {
+    display: flex;
+    align-content: center;
+    justify-content: flex-end;
 }

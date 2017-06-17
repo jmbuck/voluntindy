@@ -5,6 +5,7 @@ import UserSiteInfo from './UserSiteInfo'
 import './NavBar.css'
 import UserAuthentication from './UserAuthentication'
 import Account from './Account'
+import Opportunities from './Opportunities'
 
 class NavBar extends Component{
     constructor(){
@@ -21,19 +22,29 @@ class NavBar extends Component{
         this.props.firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 // User is signed in
-                console.log('logged in');
                 this.props.firebase.database().ref('users/'+this.props.firebase.auth().currentUser.uid).on('value', (snapshot) => {this.credits(snapshot.val().credits)})
                 this.props.firebase.database().ref('users/'+this.props.firebase.auth().currentUser.uid).on('value', (snapshot) => {this.firstName(snapshot.val().firstName)})
                 this.props.firebase.database().ref('users/'+this.props.firebase.auth().currentUser.uid).on('value', (snapshot) => {this.lastName(snapshot.val().lastName)})
                 this.email(this.props.firebase.auth().currentUser.email)
+                this.setState({loggedIn: true}, () => this.loggedIn())
             } else {
                 // No user is signed in.
-                console.log('none');
                 this.setState({credits: 0});
+                this.setState({loggedIn:false}, () => this.loggedIn())
+            }
+    }) 
+
+    
+       
+}
+
+loggedIn() {
+        if(this.state.loggedIn){
+            let titleClasses = [...this.state.titleClasses]
+            titleClasses[4] = "tabs-title hide"
+            this.setState({titleClasses})
         }
-        });
-  
-    }
+        }; 
 
     credits(credits) {
         this.setState({credits})
@@ -79,6 +90,14 @@ class NavBar extends Component{
         })
     }
 
+    logOut(){
+        this.props.firebase.auth().signOut().then(function() {
+        window.location.reload()
+        }, function(error) {
+         alert(error);
+        });
+    }
+
     render(){
         return (
             <div className="NavBar">
@@ -95,16 +114,17 @@ class NavBar extends Component{
                     </li>
                     <li className={this.state.titleClasses[5]} id={5} onClick={this.select.bind(this)}><a href="#panel2" aria-selected={this.state.titleSelected[5]}><span className="col">Your Account</span></a>
                     </li>
+                    <div className="b"><button type="button" className="button alert" onClick={this.logOut.bind(this)}>Log Out</button>
+                <button type="button" className="button" onClick={this.addCredit.bind(this)}>Add Credit</button></div>
                 </ul>
-
-                <button type="button" className="button" onClick={this.addCredit.bind(this)}>Add Credit</button>
+                
 
                 <div className="tabs-content" data-tabs-content="example-tabs">
                     <div className={this.state.panelClasses[0]} id="panel1">
                         <UserSiteInfo />
                     </div>
                     <div className={this.state.panelClasses[1]} id="panel2">
-                        <p>Suspendisse dictum feugiat nisl ut dapibus. Vivamus hendrerit arcu sed erat molestie vehicula. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
+                        <Opportunities firebase={this.props.firebase}/>
                     </div>
                     <div className={this.state.panelClasses[2]} id="panel2">
                         <p>Rewards</p>
@@ -118,6 +138,7 @@ class NavBar extends Component{
                     <div className={this.state.panelClasses[5]} id="panel2">
                         <Account credits={this.state.credits} firstName={this.state.firstName} lastName={this.state.lastName} email={this.state.email} firebase={this.props.firebase} />
                     </div>
+                    
                 </div>
             </div>
         )
