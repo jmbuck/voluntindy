@@ -17,6 +17,11 @@ class NavBar extends Component{
         }
     }
 
+    componentDidMount() {
+        if(this.props.firebase.auth().currentUser != null) 
+            this.props.firebase.database().ref('users/'+this.props.firebase.auth().currentUser.uid).on('value', (snapshot) => {this.credits(snapshot.val().credits)})
+    }
+
     credits(credits) {
         this.setState({credits})
     }
