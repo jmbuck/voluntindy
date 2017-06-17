@@ -66,7 +66,7 @@ class Opportunity extends Component {
         return (
             <li className="opportunity">
                 <p className="opp-li">Title: {this.props.opp.title}</p>
-                <p className="opp-li">Description: {this.props.opp.description}</p>
+                <p className="opp-li">Description: {this.props.opp.desc}</p>
                 <p className="opp-li">Location: {this.props.opp.location}</p>
                 <p className="opp-li">Date: {this.props.opp.date}</p>
                 <p className="opp-li">Time: {this.props.opp.time}</p>
