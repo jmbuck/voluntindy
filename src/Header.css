@@ -19,4 +19,7 @@ h1 span {
 
 .accountInfo {
     justify-content: flex-end;
+    font-family: 'Patrick Hand SC', cursive;
+    font-weight: 300px;
+    font-size: 20px;
 }
