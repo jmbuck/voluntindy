@@ -4,7 +4,7 @@ import './SignIn.css'
 class SignIn extends Component {
     render(){
         return(
-           console.log('Sign In, man.')
+           <p>a</p>
         )
     }
 }
