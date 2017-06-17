@@ -1,14 +1,14 @@
 import React from 'react'
 
-const Opportunity = ({title, description, location, date, time, contact}) => {
+const Opportunity = (props) => {
     return (
         <li>
-            <p>{title}</p>
-            <p>{description}</p>
-            <p>{location}</p>
-            <p>{date}</p>
-            <p>{time}</p>
-            <p>{contact}</p>
+            <p>Title: {props.opp.title}</p>
+            <p>Description: {props.opp.description}</p>
+            <p>Location: {props.opp.location}</p>
+            <p>Date: {props.opp.date}</p>
+            <p>Time: {props.opp.time}</p>
+            <p>Contact Information: {props.opp.contact}</p>
         </li>
     )
 }

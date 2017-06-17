@@ -10,11 +10,17 @@ class Opportunities extends Component {
     }
 
     componentDidMount(){
-         this.props.firebase.database().ref('opportunities').on('value', (snapshot) => {if(snapshot.val() != null) {
-             this.setState(snapshot.val().opportunities)}})
+         let opps = [];
+         this.props.firebase.database().ref('opportunities').on('value', (snapshot) => {
+            if(snapshot.val() != null) {
+                this.setState({opportunities: snapshot.val().opportunities})
+            }
+         })
     }
 
     add(ev){
+        ev.preventDefault()
+        debugger;
         const form = ev.currentTarget
         const title = form.title.value
         const desc = form.desc.value
@@ -25,9 +31,10 @@ class Opportunities extends Component {
         const id = Date.now()
         const opp = {title, desc, location, date, time, contact, id}
         const opportunities = [...this.state.opportunities]
+        console.log(opportunities)
         opportunities.unshift(opp)
         this.setState({opportunities})
-                this.props.firebase.database().ref('opportunities').set({
+                this.props.firebase.database().ref('opportunities').update({
             opportunities
         });
     }
@@ -38,7 +45,7 @@ class Opportunities extends Component {
             <div>
                 <form onSubmit={this.add.bind(this)}>
                     <input name="title" type="text" placeholder="Title" />
-                    <input name="desc" type="textArea" placeholder="Description" />
+                    <textarea name="desc" type="text" placeholder="Description" ></textarea>
                     <input name="location" type="text" placeholder="Location" />
                     <input name="date" type="date" placeholder="Date" />
                     <input name="time" type="text" placeholder="Time" />
