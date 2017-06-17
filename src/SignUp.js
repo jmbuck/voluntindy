@@ -3,12 +3,24 @@ import React, { Component } from 'react'
 class SignUp extends Component {
 
     signUp(ev) {
-        this.props.firebase.auth().createUserWithEmailAndPassword(
-            document.querySelector('.email').value, document.querySelector('.password').value).catch(function(error) {
+        const auth = this.props.firebase.auth()
+        auth.createUserWithEmailAndPassword(
+            document.querySelector('.signUpForm .email').value, document.querySelector('.signUpForm .password').value).then(
+                ()=>this.setCredits(auth.currentUser)).catch(function(error) {
         // Handle Errors here.
-        alert(error.message);
-    });
-        
+        alert(error.message);  
+        });
+        //console.log(auth.currentUser.email);
+        //this.setCredits(auth.currentUser)
+
+    }
+
+    setCredits(user) {
+        console.log(user.email);
+        const userId = user.uid;
+        this.props.firebase.database().ref('users/' + userId).set({
+            credits: 5,
+        });
     }
 
     render(){
