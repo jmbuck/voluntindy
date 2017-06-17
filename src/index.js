@@ -5,6 +5,5 @@ import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
 
-let database = firebase.database();
-ReactDOM.render(<App database = {database} />, document.getElementById('root'));
+ReactDOM.render(<App/>, document.getElementById('root'));
 registerServiceWorker();
