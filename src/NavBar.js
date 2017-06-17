@@ -6,6 +6,7 @@ import './NavBar.css'
 import UserAuthentication from './UserAuthentication'
 import Account from './Account'
 import Opportunities from './Opportunities'
+import Rewards from './Reward'
 
 class NavBar extends Component{
     constructor(){
@@ -127,7 +128,7 @@ loggedIn() {
                         <Opportunities firebase={this.props.firebase}/>
                     </div>
                     <div className={this.state.panelClasses[2]} id="panel2">
-                        <p>Rewards</p>
+                        <Rewards />
                     </div>
                     <div className={this.state.panelClasses[3]} id="panel2">
                         <p>Donate</p>
