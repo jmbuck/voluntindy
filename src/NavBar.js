@@ -7,6 +7,7 @@ import UserAuthentication from './UserAuthentication'
 import Account from './Account'
 import Opportunities from './Opportunities'
 import Rewards from './Reward'
+import Donate from './Donate'
 
 class NavBar extends Component{
     constructor(){
@@ -128,7 +129,7 @@ loggedIn() {
                         <Rewards firebase={this.props.firebase}/>
                     </div>
                     <div className={this.state.panelClasses[3]} id="panel2">
-                        <p>Donate</p>
+                        <Donate />
                     </div>
                     <div className={this.state.panelClasses[4]} id="panel2">
                         <UserAuthentication credits={this.credits.bind(this)} firebase={this.props.firebase} credits={this.state.credits} c={this.credits.bind(this)} />   
