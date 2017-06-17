@@ -33,8 +33,8 @@ class SignUp extends Component {
 
     setCredits(user, formInfo) {
         console.log(formInfo.firstName.value);
-        const userId = user.uid;
-        this.props.firebase.database().ref('users/' + userId).set({
+        const email = user.email.replace('.', '');
+        this.props.firebase.database().ref('users/' + email).set({
             credits: 1,
             firstName: formInfo.firstName.value,
             lastName: formInfo.lastName.value,

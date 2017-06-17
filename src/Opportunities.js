@@ -30,9 +30,9 @@ class Opportunities extends Component {
         const time = form.time.value
         const contact = form.contact.value
         const id = Date.now()
-        const opp = {title, desc, location, date, time, contact, id}
+        const ownerEmail = this.props.firebase.auth().currentUser.email.replace('.', '');
+        const opp = {title, desc, location, date, time, contact, id, ownerEmail}
         const opportunities = [...this.state.opportunities]
-        console.log(opportunities)
         opportunities.unshift(opp)
         this.setState({opportunities})
                 this.props.firebase.database().ref('opportunities').update({
@@ -51,9 +51,9 @@ class Opportunities extends Component {
                     <input name="date" type="date" placeholder="Date" />
                     <input name="time" type="text" placeholder="Time" />
                     <input name="contact" type="text" placeholder="Contact Information" />
-                    <button className="opportunity-button" type="submit">Add</button>
+                    <button type="submit">Add</button>
                 <ul className="Opportunities no-bullet">
-                    {this.state.opportunities.map((opp, i) => <Opportunity key={i} opp={opp}/>)}
+                    {this.state.opportunities.map((opp, i) => <Opportunity key={i} addCredit={this.props.addCredit} opp={opp}/>)}
                 </ul>
                 </form>
             </div>

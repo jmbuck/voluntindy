@@ -14,9 +14,9 @@ class App extends Component {
 
      this.props.firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-      this.props.firebase.database().ref('users/'+this.props.firebase.auth().currentUser.uid).on('value', (snapshot) => {this.setState({credits: snapshot.val().credits})})
-      this.props.firebase.database().ref('users/'+this.props.firebase.auth().currentUser.uid).on('value', (snapshot) => {this.setState({firstName: snapshot.val().firstName})})
-      this.props.firebase.database().ref('users/'+this.props.firebase.auth().currentUser.uid).on('value', (snapshot) => {this.setState({lastName: snapshot.val().lastName})})
+      this.props.firebase.database().ref('users/'+this.props.firebase.auth().currentUser.email.replace('.','')).on('value', (snapshot) => {this.setState({credits: snapshot.val().credits})})
+      this.props.firebase.database().ref('users/'+this.props.firebase.auth().currentUser.email.replace('.','')).on('value', (snapshot) => {this.setState({firstName: snapshot.val().firstName})})
+      this.props.firebase.database().ref('users/'+this.props.firebase.auth().currentUser.email.replace('.','')).on('value', (snapshot) => {this.setState({lastName: snapshot.val().lastName})})
       } else
         this.setState({firstName: "Not Logged In", lastName: "", credits: 0,})
      })
