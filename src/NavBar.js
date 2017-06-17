@@ -14,7 +14,7 @@ class NavBar extends Component{
         this.state = {
             titleClasses: ["tabs-title is-active", "tabs-title", "tabs-title", "tabs-title", "tabs-title", "tabs-title"],
             panelClasses: ["tabs-panel is-active", "tabs-panel", "tabs-panel", "tabs-panel", "tabs-panel", "tabs-panel"],
-            titleSelected: ["true", "false", "false", "false", "false", "false"],
+            titleSelected: ["true", "false", "false", "false", "false", "false"]
         }
     }
 
@@ -39,12 +39,16 @@ class NavBar extends Component{
 }
 
 loggedIn() {
+    let titleClasses = [...this.state.titleClasses]
+    console.log(this.state.loggedIn)
         if(this.state.loggedIn){
-            let titleClasses = [...this.state.titleClasses]
             titleClasses[4] = "tabs-title hide"
             this.setState({titleClasses})
+        }else{
+            titleClasses[4] = "tabs-title"
+            this.setState({titleClasses})
         }
-        }; 
+    }; 
 
     credits(credits) {
         this.setState({credits})
@@ -121,13 +125,13 @@ loggedIn() {
                         <Opportunities addCredit= {this.addCredit.bind(this)} firebase={this.props.firebase}/>
                     </div>
                     <div className={this.state.panelClasses[2]} id="panel2">
-                        <Rewards />
+                        <Rewards firebase={this.props.firebase}/>
                     </div>
                     <div className={this.state.panelClasses[3]} id="panel2">
                         <p>Donate</p>
                     </div>
                     <div className={this.state.panelClasses[4]} id="panel2">
-                        <UserAuthentication credits={this.credits.bind(this)} firebase={this.props.firebase} />   
+                        <UserAuthentication credits={this.credits.bind(this)} firebase={this.props.firebase} credits={this.state.credits} c={this.credits.bind(this)} />   
                     </div>
                     <div className={this.state.panelClasses[5]} id="panel2">
                         <Account credits={this.state.credits} firstName={this.state.firstName} lastName={this.state.lastName} email={this.state.email} firebase={this.props.firebase} />
