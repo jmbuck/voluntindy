@@ -7,7 +7,18 @@ class UserSiteInfo extends Component{
         return(
             <div className="siteInfo">
                 <h1>Welcome to <span>Voluntindy</span>!</h1>
-                <h2>Where you can get credit for volunteering!!</h2>
+                <h2>Where you can get credit for volunteering!</h2>
+                <div className="container">
+                    <div className="register-info">
+                        <p>Sign up to look at volunteer opportunities near you!</p>
+                    </div>
+                    <div className="credit-info">
+                        <p>Once you've successfully volunteered, you'll earn credit that you can redeem for cool things!</p> 
+                    </div>
+                    <div className="donate-info">
+                        <p>Can't volunteer your time because of scheduling conflicts? Donate to your city of Indianapolis and you can redeem credits too!</p>
+                    </div>
+                </div>
             </div>
         )
     }
