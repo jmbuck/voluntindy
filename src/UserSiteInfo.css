@@ -10,8 +10,10 @@ h1 span {
 }
 .register-info, .credit-info, .donate-info{
     box-sizing:border-box;
-    border: 2px solid rgba(242, 74, 37, 0.7);
+    border: 2px solid rgb(209, 41, 1);
+    background-color: rgba(242, 74, 37, 0.7);
     margin-left: 10px;
+    border-radius: 5px;
 }
 .donate-info{
     margin-right: 10px;
