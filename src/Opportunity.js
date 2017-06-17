@@ -8,10 +8,15 @@ class Opportunity extends Component {
         this.state = {
             formClasses: 'contributors hide',
             buttonClasses: 'button',
+            deleteButtonClass: 'button hide'
         }
     }
 
-
+    componentDidMount(){
+         if(this.props.firebase.auth().currentUser.email.replace('.', '') === this.props.opp.userEmail){
+             this.setState({deleteButtonClass: 'button'})
+         }
+    }
     reward(ev) {
         const emails = ev.target.contributors.value.split('\n');
         const valid = [];
@@ -75,6 +80,7 @@ class Opportunity extends Component {
                     <button type="submit" className="button">Submit</button>
                 </form>
                 <button type="button" className={this.state.buttonClasses} onClick={this.handleClick.bind(this)}>Reward participants</button>
+                <button type="button" className={this.state.deleteButtonClass} onClick={() => this.props.delete(this.props.opp.title)}>Delete</button>
             </li>
      )
     }

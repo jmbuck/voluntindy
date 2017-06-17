@@ -20,6 +20,20 @@ class Opportunities extends Component {
          })
     }
 
+    remove(title){
+        
+        let opportunities = [...this.state.opportunities]
+        for(let i = 0; i<this.state.opportunities.length; i++){
+            if(title === opportunities[i].title){
+                opportunities.splice(i-1, 1)
+                this.setState({opportunities})
+                this.props.firebase.database().ref("opportunities/").set({
+                    opportunities: opportunities
+                });
+            }
+        }
+    }
+
     add(ev){
         ev.preventDefault()
         const form = ev.currentTarget
@@ -57,7 +71,7 @@ class Opportunities extends Component {
                     <button className="opportunity-button" type="submit">Add</button>
                 </form>
                 <ul className="Opportunities no-bullet">
-                    {this.state.opportunities.map((opp, i) => <Opportunity key={i} opp={opp} firebase={this.props.firebase}/>)}
+                    {this.state.opportunities.map((opp, i) => <Opportunity key={i} opp={opp} firebase={this.props.firebase} delete={this.remove.bind(this)}/>)}
                 </ul>
             </div>
         )

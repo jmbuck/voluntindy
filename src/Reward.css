@@ -12,6 +12,7 @@ table{
   margin-top: 20px;
   background: none;
 }
+
 td img{
   width:300px;
   height:200px;
@@ -29,4 +30,5 @@ td > p.itemReward{
 }
 tbody{
   background-color:black;
+  background: rgba(76, 175, 80, 0.0)
 }
