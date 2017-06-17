@@ -15,9 +15,6 @@ class App extends Component {
         <div className="App-header">
           <NavBar firebase={this.props.firebase}/>
         </div>
-        <div className="Website-info">
-          <UserSiteInfo />
-        </div>
            
       </div>
     );
