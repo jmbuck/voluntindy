@@ -22,7 +22,7 @@ class UserAuthentication extends Component {
         return ( 
             <div>
                 <div className={this.state.signIn}>
-                    <SignIn firebase={this.props.firebase}/>
+                    <SignIn credits={this.props.credits} firebase={this.props.firebase}/>
                 </div>
                 <div className={this.state.signUp}>
                     <SignUp firebase={this.props.firebase}/>

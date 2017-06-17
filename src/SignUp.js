@@ -64,7 +64,7 @@ class SignUp extends Component {
                             type="text" 
                             name="userName" 
                             className="email"
-                            placeholder="Enter e-mail" 
+                            placeholder="E-mail" 
                         />
                     </div>
                     <div>
@@ -72,7 +72,7 @@ class SignUp extends Component {
                             type="password" 
                             name="password" 
                             className="password"
-                            placeholder="Enter password"     
+                            placeholder="Password"     
                         />
                     </div>
                     <div>
