@@ -6,8 +6,7 @@ class UserSiteInfo extends Component{
     render(){
         return(
             <div className="siteInfo">
-                <h1>Welcome to <span>Voluntindy</span>!</h1>
-                <h2>Where you can get credit for volunteering!</h2>
+                
                 <div className="container">
                     <div className="register-info">
                         <p>Sign up to look at volunteer opportunities near you!</p>

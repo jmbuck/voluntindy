@@ -1,12 +1,9 @@
 .siteInfo {
     margin:auto;
 }
-h1, h2, p{
+p{
     font-family: 'Permanent Marker', cursive;
     text-align: center;
-}
-h1 span {
-    color:#F34B26;
 }
 .register-info, .credit-info, .donate-info{
     box-sizing:border-box;
