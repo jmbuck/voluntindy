@@ -3,6 +3,7 @@ import SignIn from './SignIn'
 import SignUp from './SignUp'
 import UserSiteInfo from './UserSiteInfo'
 import './NavBar.css'
+import UserAuthentication from './UserAuthentication'
 
 class NavBar extends Component{
     constructor(){
@@ -65,8 +66,7 @@ class NavBar extends Component{
                         <p>Donate</p>
                     </div>
                     <div className={this.state.panelClasses[4]} id="panel2">
-                        <SignIn firebase={this.props.firebase}/>
-                        <SignUp firebase={this.props.firebase}/>
+                        <UserAuthentication firebase={this.props.firebase}/>   
                     </div>
                     <div className={this.state.panelClasses[5]} id="panel2">
                         <p>Your Account</p>
