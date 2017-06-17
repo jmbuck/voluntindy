@@ -15,9 +15,5 @@ var config = {
 };
 let app = firebase.initializeApp(config);
 
-<<<<<<< HEAD
-ReactDOM.render(<App/>, document.getElementById('root'));
-=======
 ReactDOM.render(<App firebase={app} />, document.getElementById('root'));
->>>>>>> 78ff7326b70db3d36252dc1b7cbb2f6804ec1c65
 registerServiceWorker();
