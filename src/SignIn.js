@@ -16,9 +16,7 @@ class SignIn extends Component {
 
     getCredits(user) {
         const userId = user.uid;
-        let credits;
-        this.props.firebase.database().ref('/users/'+userId).on('value', (snapshot) => {credits = snapshot.val().credits})
-        console.log(credits);
+        this.props.firebase.database().ref('/users/'+userId).on('value', (snapshot) => {this.props.credits(snapshot.val().credits)})
     }
 
     render(){

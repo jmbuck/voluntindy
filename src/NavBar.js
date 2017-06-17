@@ -4,6 +4,7 @@ import SignUp from './SignUp'
 import UserSiteInfo from './UserSiteInfo'
 import './NavBar.css'
 import UserAuthentication from './UserAuthentication'
+import Account from './Account'
 
 class NavBar extends Component{
     constructor(){
@@ -11,8 +12,13 @@ class NavBar extends Component{
         this.state = {
             titleClasses: ["tabs-title is-active", "tabs-title", "tabs-title", "tabs-title", "tabs-title", "tabs-title"],
             panelClasses: ["tabs-panel is-active", "tabs-panel", "tabs-panel", "tabs-panel", "tabs-panel", "tabs-panel"],
-            titleSelected: ["true", "false", "false", "false", "false", "false"]
+            titleSelected: ["true", "false", "false", "false", "false", "false"],
+            credits: 0,
         }
+    }
+
+    credits(credits) {
+        this.setState({credits})
     }
 
     select(ev){
@@ -30,8 +36,17 @@ class NavBar extends Component{
                 panelClasses[i] = "tabs-panel"
             }
         }
-        this.setState({titleSelected: titleSelected, titleClasses: titleClasses, panelClasses: panelClasses})
-        
+        this.setState({titleSelected: titleSelected, titleClasses: titleClasses, panelClasses: panelClasses})   
+    }
+
+    addCredit() {
+        this.props.firebase.database().ref('users/' + userId).set({
+            credits: this.state.credits + 1,
+        });
+
+        this.setState({
+            credits: this.state.credits + 1
+        })
     }
 
     render(){
@@ -52,6 +67,8 @@ class NavBar extends Component{
                     </li>
                 </ul>
 
+                <button type="button" className="button" onClick={this.addCredit.bind(this)}>Add Credit</button>
+
                 <div className="tabs-content" data-tabs-content="example-tabs">
                     <div className={this.state.panelClasses[0]} id="panel1">
                         <UserSiteInfo />
@@ -66,10 +83,10 @@ class NavBar extends Component{
                         <p>Donate</p>
                     </div>
                     <div className={this.state.panelClasses[4]} id="panel2">
-                        <UserAuthentication firebase={this.props.firebase}/>   
+                        <UserAuthentication credits={this.credits.bind(this)} firebase={this.props.firebase} />   
                     </div>
                     <div className={this.state.panelClasses[5]} id="panel2">
-                        <p>Your Account</p>
+                        <Account credits={this.state.credits} firebase={this.props.firebase} />
                     </div>
                 </div>
             </div>
