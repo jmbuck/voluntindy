@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import NavBar from './NavBar.js'
-import SignIn from './SignIn'
-import SignUp from './SignUp'
+import UserSiteInfo from './UserSiteInfo'
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +12,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <NavBar firebase={this.props.firebase}/> 
+        <div className="App-header">
+          <NavBar firebase={this.props.firebase}/>
+        </div>
+        <div className="Website-info">
+          <UserSiteInfo />
+        </div>
+           
       </div>
     );
   }
