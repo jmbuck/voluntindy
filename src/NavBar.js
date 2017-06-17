@@ -19,13 +19,12 @@ class NavBar extends Component{
     }
 
     componentDidMount() {
-
         this.props.firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 // User is signed in
-                this.props.firebase.database().ref('users/'+this.props.firebase.auth().currentUser.uid).on('value', (snapshot) => {this.credits(snapshot.val().credits)})
-                this.props.firebase.database().ref('users/'+this.props.firebase.auth().currentUser.uid).on('value', (snapshot) => {this.firstName(snapshot.val().firstName)})
-                this.props.firebase.database().ref('users/'+this.props.firebase.auth().currentUser.uid).on('value', (snapshot) => {this.lastName(snapshot.val().lastName)})
+                this.props.firebase.database().ref('users/'+this.props.firebase.auth().currentUser.email.replace('.', '')).on('value', (snapshot) => {this.credits(snapshot.val().credits)})
+                this.props.firebase.database().ref('users/'+this.props.firebase.auth().currentUser.email.replace('.', '')).on('value', (snapshot) => {this.firstName(snapshot.val().firstName)})
+                this.props.firebase.database().ref('users/'+this.props.firebase.auth().currentUser.email.replace('.', '')).on('value', (snapshot) => {this.lastName(snapshot.val().lastName)})
                 this.email(this.props.firebase.auth().currentUser.email)
                 this.setState({loggedIn: true}, () => this.loggedIn())
             } else {
@@ -81,14 +80,11 @@ loggedIn() {
         this.setState({titleSelected: titleSelected, titleClasses: titleClasses, panelClasses: panelClasses})   
     }
 
-    addCredit() {
-        this.props.firebase.database().ref('users/' + this.props.firebase.auth().currentUser.uid).update({
-            credits: this.state.credits + 1,
-        });
+    addCredit(amount, email, credits) {
 
-        this.setState({
-            credits: this.state.credits + 1
-        })
+        this.props.firebase.database().ref('users/' + email).update({
+            credits: credits + amount,
+        });
     }
 
     logOut(){
@@ -115,17 +111,14 @@ loggedIn() {
                     </li>
                     <li className={this.state.titleClasses[5]} id={5} onClick={this.select.bind(this)}><a href="#panel2" aria-selected={this.state.titleSelected[5]}><span className="col">Your Account</span></a>
                     </li>
-                    <div className="b"><button type="button" className="button alert" onClick={this.logOut.bind(this)}>Log Out</button>
-                <button type="button" className="button" onClick={this.addCredit.bind(this)}>Add Credit</button></div>
+                    <div className="b"><button type="button" className="button alert" onClick={this.logOut.bind(this)}>Log Out</button> </div>
                 </ul>
-                
-
                 <div className="tabs-content" data-tabs-content="example-tabs">
                     <div className={this.state.panelClasses[0]} id="panel1">
                         <UserSiteInfo />
                     </div>
                     <div className={this.state.panelClasses[1]} id="panel2">
-                        <Opportunities firebase={this.props.firebase}/>
+                        <Opportunities addCredit= {this.addCredit.bind(this)} firebase={this.props.firebase}/>
                     </div>
                     <div className={this.state.panelClasses[2]} id="panel2">
                         <Rewards />

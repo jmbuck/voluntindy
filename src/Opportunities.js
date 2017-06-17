@@ -25,6 +25,7 @@ class Opportunities extends Component {
         const form = ev.currentTarget
         const title = form.title.value
         const desc = form.desc.value
+        const skills=form.skills.value
         const location = form.location.value
         const date = form.date.value
         const time = form.time.value
@@ -47,15 +48,16 @@ class Opportunities extends Component {
                 <form onSubmit={this.add.bind(this)}>
                     <input name="title" type="text" placeholder="Title" />
                     <textarea name="desc" type="text" placeholder="Description" ></textarea>
+                    <input name="skills" type="text" placeholder="Skills Needed" />
                     <input name="location" type="text" placeholder="Location" />
                     <input name="date" type="date" placeholder="Date" />
                     <input name="time" type="text" placeholder="Time" />
                     <input name="contact" type="text" placeholder="Contact Information" />
                     <button className="opportunity-button" type="submit">Add</button>
+                </form>
                 <ul className="Opportunities no-bullet">
                     {this.state.opportunities.map((opp, i) => <Opportunity key={i} opp={opp}/>)}
                 </ul>
-                </form>
             </div>
         )
     }
