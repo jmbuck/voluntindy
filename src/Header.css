@@ -9,9 +9,10 @@ img{
     margin-top: -5px;
 }
 h1{
-    font-family: 'Permanent Marker', cursive;
+    font-family: 'Patrick Hand SC', cursive;
     text-align: center;
     margin-left: 30px;
+    font-size: 65px;
 }
 h1 span {
     color:#F34B26;

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import NavBar from './NavBar.js'
 import UserSiteInfo from './UserSiteInfo'
 import Header from './Header'

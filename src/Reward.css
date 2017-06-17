@@ -22,6 +22,7 @@ td > p.numCredit{
   background-color: rgba(245, 177, 101, 0.8);
   border:1px solid rgba(216, 143, 62, 0.8);
   border-radius: 5px;
+  font-size: 35px;
 }
 td > p.numCredit:hover{
   box-shadow: 3px 3px rgb(40, 31, 2);
@@ -30,6 +31,7 @@ td > p.itemReward{
   background-color: rgba(245, 129, 101, 0.8);
   border: 1px solid rgba(216, 91, 62, 0.8);
   border-radius: 5px;
+  font-size: 35px;
 }
 tbody{
   background: rgba(106, 161, 185, 0.8) !important;
