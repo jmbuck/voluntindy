@@ -2,26 +2,35 @@ import React, { Component } from 'react'
 import './SignIn.css'
 
 class SignIn extends Component {
+
+    signIn(ev) {
+        this.props.firebase.auth().signInWithEmailAndPassword(
+            document.querySelector('.email').value, document.querySelector('.password').value
+        ).catch((e) => {
+            alert(e.message);
+        })
+    }
+
     render(){
         return(
-           //console.log('Sign In, man.')
             <div className="signInForm">
-                <form>
-                    <p>
-                        <input 
-                            type="text" 
-                            name="userName" 
-                            placeholder="Enter username..." 
-                        />
-                    </p>
-                    <p>
-                        <input 
-                            type="password" 
-                            name="password" 
-                            placeholder="Enter password..."     
-                        />
-                    </p>
-                </form>
+                <p>
+                    <input 
+                        type="text" 
+                        name="userName" 
+                        className="email"
+                        placeholder="Enter e-mail..." 
+                    />
+                </p>
+                <p>
+                    <input 
+                        type="password" 
+                        name="password" 
+                        className="password"
+                        placeholder="Enter password..."     
+                    />
+                </p>
+                <button type="button" className="button" onClick={this.signIn.bind()}>Sign In</button>
             </div>   
         )
     }
