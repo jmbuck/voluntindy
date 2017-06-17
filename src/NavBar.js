@@ -40,7 +40,7 @@ class NavBar extends Component{
     }
 
     addCredit() {
-        this.props.firebase.database().ref('users/' + userId).set({
+        this.props.firebase.database().ref('users/' + this.props.firebase.auth().currentUser.uid).set({
             credits: this.state.credits + 1,
         });
 
