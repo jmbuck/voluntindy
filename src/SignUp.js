@@ -14,22 +14,22 @@ class SignUp extends Component {
     render(){
         return(
             <div className="signUpForm">
-                    <p>
+                    <div>
                         <input 
                             type="text" 
                             name="userName" 
                             className="email"
                             placeholder="Enter e-mail..." 
                         />
-                    </p>
-                    <p>
+                    </div>
+                    <div>
                         <input 
                             type="password" 
                             name="password" 
                             className="password"
                             placeholder="Enter password..."     
                         />
-                    </p>
+                    </div>
                     <button type="button" className="button" onClick={this.signUp.bind(this)}>Sign Up</button>
             </div>   
         )

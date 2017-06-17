@@ -13,7 +13,6 @@ class NavBar extends Component{
     }
 
     select(ev){
-        debugger
         let titleClasses = [...this.state.titleClasses]
         let panelClasses = [...this.state.panelClasses]
         let titleSelected = [...this.state.titleSelected]
@@ -28,7 +27,6 @@ class NavBar extends Component{
                 panelClasses[i] = "tabs-panel"
             }
         }
-        console.log(titleClasses)
         this.setState({titleSelected: titleSelected, titleClasses: titleClasses, panelClasses: panelClasses})
         
     }
@@ -65,8 +63,8 @@ class NavBar extends Component{
                         <p>Donate</p>
                     </div>
                     <div className={this.state.panelClasses[4]} id="panel2">
-                        <p><SignIn firebase={this.props.firebase}/></p>
-                        <p><SignUp firebase={this.props.firebase}/></p>
+                        <SignIn firebase={this.props.firebase}/>
+                        <SignUp firebase={this.props.firebase}/>
                     </div>
                     <div className={this.state.panelClasses[5]} id="panel2">
                         <p>Your Account</p>
