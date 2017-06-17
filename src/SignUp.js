@@ -7,8 +7,9 @@ class SignUp extends Component {
             document.querySelector('.email').value, document.querySelector('.password').value).catch(function(error) {
         // Handle Errors here.
         alert(error.message);
+        console.log(this.props.firebase.auth().currentUser.email)
     });
-        
+
     }
 
     render(){

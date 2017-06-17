@@ -4,10 +4,12 @@ import './SignIn.css'
 class SignIn extends Component {
 
     signIn(ev) {
+        
         this.props.firebase.auth().signInWithEmailAndPassword(
             document.querySelector('.email').value, document.querySelector('.password').value
         ).catch((e) => {
             alert(e.message);
+            console.log(document.querySelector('.email').value);
         })
     }
 
