@@ -15,9 +15,10 @@ class SignUp extends Component {
              const auth = this.props.firebase.auth()
             auth.createUserWithEmailAndPassword(
             document.querySelector('.signUpForm .email').value, document.querySelector('.signUpForm .password').value).then(
-                ()=>this.setCredits(auth.currentUser, formInfo)).catch(function(error) {
+                ()=>{this.setCredits(auth.currentUser, formInfo);
+                    window.location.reload()}).catch(function(error) {
                 alert(error.message);  
-                });
+            });
         } else {
             formInfo.password.value = '';
             formInfo.confirm.value = '';

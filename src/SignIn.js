@@ -7,7 +7,7 @@ class SignIn extends Component {
         const auth = this.props.firebase.auth();
         auth.signInWithEmailAndPassword(
             document.querySelector('.signInForm .email').value, document.querySelector('.signInForm .password').value
-        ).catch((e) => {
+        ).then(() => window.location.reload()).catch((e) => {
             alert(e.message);
         })
 
@@ -17,6 +17,7 @@ class SignIn extends Component {
     getCredits(user) {
         const userId = user.uid;
         this.props.firebase.database().ref('/users/'+userId).on('value', (snapshot) => {this.props.credits(snapshot.val().credits)})
+        window.location.reload();
     }
 
     render(){
