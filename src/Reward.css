@@ -27,6 +27,7 @@ td > p.numCredit{
 td > p.itemReward{
   background-color: rgba(245, 129, 101, 1);
   border: 1px solid rgba(216, 91, 62, 1);
+  border-radius: 5px;
 }
 tbody{
   background: rgba(76, 175, 80, 0.0)
