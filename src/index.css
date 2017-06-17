@@ -7,4 +7,5 @@ body {
   background-color: #A0CADA;
   background-repeat: no-repeat;
   background-position: center bottom;
+  background-attachment: fixed;
 }

@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import Opportunity from './Opportunity'
+import './Opportunities.css'
+
 class Opportunities extends Component {
     constructor(props) {
         super(props)
@@ -49,8 +51,8 @@ class Opportunities extends Component {
                     <input name="date" type="date" placeholder="Date" />
                     <input name="time" type="text" placeholder="Time" />
                     <input name="contact" type="text" placeholder="Contact Information" />
-                    <button type="submit">Add</button>
-                <ul className="Opportunities">
+                    <button className="opportunity-button" type="submit">Add</button>
+                <ul className="Opportunities no-bullet">
                     {this.state.opportunities.map((opp, i) => <Opportunity key={i} opp={opp}/>)}
                 </ul>
                 </form>
