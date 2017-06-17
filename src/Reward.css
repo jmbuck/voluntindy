@@ -1,11 +1,32 @@
 td {
     width: 100px;
     padding: 10px;
+    text-align: center;
+    background: none;
+    
 }
 
 table{
   left: 50hw;
   position: absolute;
+  margin-top: 20px;
+  background: none;
 }
-
-img {}
+td img{
+  width:300px;
+  height:200px;
+  align-items: center;
+  border-radius: 5px;
+}
+td > p.numCredit{
+  background-color: rgba(245, 177, 101, 1);
+  border:1px solid rgba(216, 143, 62, 1);
+  border-radius: 5px;
+}
+td > p.itemReward{
+  background-color: rgba(245, 129, 101, 1);
+  border: 1px solid rgba(216, 91, 62, 1);
+}
+tbody{
+  background-color:black;
+}
