@@ -31,7 +31,8 @@ class Opportunities extends Component {
         const time = form.time.value
         const contact = form.contact.value
         const id = Date.now()
-        const opp = {title, desc, location, date, time, contact, id}
+        const userEmail = this.props.firebase.auth().currentUser.email.replace('.', '')
+        const opp = {title, desc, location, date, time, contact, id, userEmail}
         const opportunities = [...this.state.opportunities]
         console.log(opportunities)
         opportunities.unshift(opp)
@@ -56,7 +57,7 @@ class Opportunities extends Component {
                     <button className="opportunity-button" type="submit">Add</button>
                 </form>
                 <ul className="Opportunities no-bullet">
-                    {this.state.opportunities.map((opp, i) => <Opportunity key={i} opp={opp}/>)}
+                    {this.state.opportunities.map((opp, i) => <Opportunity key={i} opp={opp} firebase={this.props.firebase}/>)}
                 </ul>
             </div>
         )

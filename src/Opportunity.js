@@ -51,6 +51,8 @@ class Opportunity extends Component {
                 buttonClasses: 'button hide',
             })
         } else {
+            console.log(this.props.opp.userEmail);
+            console.log(this.props.firebase.auth().currentUser.email.replace('.', ''));
             alert('Only the creater of the event may reward participants!');
         }
     }
