@@ -14,6 +14,21 @@ p{
     margin-left: 10px;
     border-radius: 5px;
 }
+.register-info:hover{
+    background-color: rgb(252, 151, 126);
+    border: 2px solid rgb(193, 97, 73);
+    box-shadow: 3px 3px rgb(61, 37, 31);
+}
+.credit-info:hover{
+    background-color: rgb(252, 151, 126);
+    border: 2px solid rgb(193, 97, 73);
+    box-shadow: 3px 3px rgb(61, 37, 31);
+}
+.donate-info:hover{
+    background-color: rgb(252, 151, 126);
+    border: 2px solid rgb(193, 97, 73);
+    box-shadow: 3px 3px rgb(61, 37, 31);
+}
 .donate-info{
     margin-right: 10px;
 }
