@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import SignIn from './SignIn'
+import SignUp from './SignUp'
 
 class NavBar extends Component{
     constructor(){
@@ -64,7 +65,8 @@ class NavBar extends Component{
                         <p>Donate</p>
                     </div>
                     <div className={this.state.panelClasses[4]} id="panel2">
-                        <p>Log In</p>
+                        <p><SignIn firebase={this.props.firebase}/></p>
+                        <p><SignUp firebase={this.props.firebase}/></p>
                     </div>
                     <div className={this.state.panelClasses[5]} id="panel2">
                         <p>Your Account</p>

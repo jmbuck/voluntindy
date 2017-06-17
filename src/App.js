@@ -13,9 +13,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <NavBar />
-          <SignIn firebase={this.props.firebase} />    
-          <SignUp firebase={this.props.firebase} />    
+          <NavBar firebase={this.props.firebase}/> 
       </div>
     );
   }
