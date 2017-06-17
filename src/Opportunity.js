@@ -1,18 +1,81 @@
 import React from 'react'
 import './Opportunity.css'
 
-const Opportunity = (props) => {
-    return (
-        <li className="opportunity">
-            <p className="opp-li"><span>Title:</span> {props.opp.title}</p>
-            <p className="opp-li"><span>Description:</span> {props.opp.description}</p>
-            <p className="opp-li"><span>Skills Needed:</span> {props.opp.skills}</p>
-            <p className="opp-li"><span>Location:</span> {props.opp.location}</p>
-            <p className="opp-li"><span>Date:</span> {props.opp.date}</p>
-            <p className="opp-li"><span>Time:</span> {props.opp.time}</p>
-            <p className="opp-li"><span>Contact Information:</span> {props.opp.contact}</p>
-        </li>
-    )
+class Opportunity extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            formClasses: 'contributors hide',
+            buttonClasses: 'button',
+        }
+    }
+
+
+    reward(ev) {
+        const emails = ev.target.contributors.value.split('\n');
+        const valid = [];
+        const invalid = [];
+        const credits = [];
+
+        //validate emails
+        emails.map(e => {
+            const email = e.replace('.', '')
+            this.props.firebase.database().ref('users').on('value', (snapshot) => {
+                if(snapshot.hasChild(email)) {
+                    valid.push(email);
+                    this.props.firebase.database().ref('users'+email).on('value', (snapshot) => {
+                        credits.push(snapshot.val().credits);
+                    })
+                } else {
+                    invalid.push(email);
+                }
+         })
+        })
+        console.log('Invalid e-mails: '+ invalid.toString())
+        const amountPerPerson = parseInt(50/valid.length);
+        valid.map((email, i) => {
+            this.props.addNote(amountPerPerson, email, credits[i])
+        })
+
+        this.setState({
+            formClasses: 'contributor hide',
+            buttonClasses: 'button hide',
+        })
+    }
+
+    handleClick() {
+        if(this.props.firebase.auth().currentUser.email.replace('.', '') === this.props.opp.userEmail) {
+            this.setState({
+                formClasses: 'contributors',
+                buttonClasses: 'button hide',
+            })
+        } else {
+            alert('Only the creater of the event may reward participants!');
+        }
+    }
+    
+    render() {
+        return (
+            <li className="opportunity">
+                <p className="opp-li">Title: {this.props.opp.title}</p>
+                <p className="opp-li">Description: {this.props.opp.description}</p>
+                <p className="opp-li">Location: {this.props.opp.location}</p>
+                <p className="opp-li">Date: {this.props.opp.date}</p>
+                <p className="opp-li">Time: {this.props.opp.time}</p>
+                <p className="opp-li">Contact Information: {this.props.opp.contact}</p>
+                <form className={this.state.formClasses} onSubmit={this.reward.bind(this)}>
+                    <textarea name="contributors" 
+                        type="text" 
+                        placeholder="Enter the e-mails of the people who volunteered. Put a separate e-mail on each line."
+                        autoFocus
+                    ></textarea>
+                    <button type="submit" className="button">Submit</button>
+                </form>
+                <button type="button" className={this.state.buttonClasses} onClick={this.handleClick.bind(this)}>Reward participants</button>
+            </li>
+     )
+    }
 }
 
 export default Opportunity
