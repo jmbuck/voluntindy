@@ -13,13 +13,23 @@ class NavBar extends Component{
             titleClasses: ["tabs-title is-active", "tabs-title", "tabs-title", "tabs-title", "tabs-title", "tabs-title"],
             panelClasses: ["tabs-panel is-active", "tabs-panel", "tabs-panel", "tabs-panel", "tabs-panel", "tabs-panel"],
             titleSelected: ["true", "false", "false", "false", "false", "false"],
-            credits: 0,
         }
     }
 
     componentDidMount() {
-        if(this.props.firebase.auth().currentUser != null) 
-            this.props.firebase.database().ref('users/'+this.props.firebase.auth().currentUser.uid).on('value', (snapshot) => {this.credits(snapshot.val().credits)})
+
+        this.props.firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                // User is signed in
+                console.log('logged in');
+                this.props.firebase.database().ref('users/'+this.props.firebase.auth().currentUser.uid).on('value', (snapshot) => {this.credits(snapshot.val().credits)})
+            } else {
+                // No user is signed in.
+                console.log('none');
+                this.setState({credits: 0});
+        }
+        });
+  
     }
 
     credits(credits) {
