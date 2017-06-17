@@ -23,6 +23,9 @@ class NavBar extends Component{
                 // User is signed in
                 console.log('logged in');
                 this.props.firebase.database().ref('users/'+this.props.firebase.auth().currentUser.uid).on('value', (snapshot) => {this.credits(snapshot.val().credits)})
+                this.props.firebase.database().ref('users/'+this.props.firebase.auth().currentUser.uid).on('value', (snapshot) => {this.firstName(snapshot.val().firstName)})
+                this.props.firebase.database().ref('users/'+this.props.firebase.auth().currentUser.uid).on('value', (snapshot) => {this.lastName(snapshot.val().lastName)})
+                this.email(this.props.firebase.auth().currentUser.email)
             } else {
                 // No user is signed in.
                 console.log('none');
@@ -34,6 +37,18 @@ class NavBar extends Component{
 
     credits(credits) {
         this.setState({credits})
+    }
+
+    firstName(firstName){
+        this.setState({firstName})
+    }
+
+    lastName(lastName){
+        this.setState({lastName})
+    }
+
+    email(email){
+        this.setState({email})
     }
 
     select(ev){
@@ -101,7 +116,7 @@ class NavBar extends Component{
                         <UserAuthentication credits={this.credits.bind(this)} firebase={this.props.firebase} />   
                     </div>
                     <div className={this.state.panelClasses[5]} id="panel2">
-                        <Account credits={this.state.credits} firebase={this.props.firebase} />
+                        <Account credits={this.state.credits} firstName={this.state.firstName} lastName={this.state.lastName} email={this.state.email} firebase={this.props.firebase} />
                     </div>
                 </div>
             </div>
